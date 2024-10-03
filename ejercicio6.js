@@ -1,6 +1,3 @@
-// Agrupa las películas de Star Wars por década de lanzamiento en un objeto donde las claves son las décadas y los valores son arrays de películas.Utiliza bucles para lograrlo e imprime el objeto final por consola.
-
-
 const starWarsMovies = [
     { title: 'A New Hope', releaseYear: 1977 },
     { title: 'The Empire Strikes Back', releaseYear: 1970 },
@@ -19,29 +16,33 @@ function Filmsbydecade(decade , filmList){
     this.decade = decade;
     this.filmList = filmList;
 }
-  
+
 let dec70 = [];
 let dec80 = [];
 let dec90 = [];
 let dec2000 = [];
 let dec2010 = [];
 
+function listaDecadas(objeto){
+    if(objeto.releaseYear >= 1970 && objeto.releaseYear < 1980){
+        dec70.push(objeto.title);
+    }
+    if(objeto.releaseYear >= 1980 && objeto.releaseYear < 1990){
+        dec80.push(objeto.title);
+    }
+    if(objeto.releaseYear >= 1990 && objeto.releaseYear < 2000){
+        dec90.push(objeto.title);
+    }
+    if(objeto.releaseYear >= 2000 && objeto.releaseYear < 2010){
+        dec2000.push(objeto.title);
+    }
+    if(objeto.releaseYear >= 2010){
+        dec2010.push(objeto.title);
+    }
+}
+  
 for (const movie of starWarsMovies) {
-    if(movie.releaseYear >= 1970 && movie.releaseYear < 1980){
-        dec70.push(movie.title);
-    }
-    if(movie.releaseYear >= 1980 && movie.releaseYear < 1990){
-        dec80.push(movie.title);
-    }
-    if(movie.releaseYear >= 1990 && movie.releaseYear < 2000){
-        dec90.push(movie.title);
-    }
-    if(movie.releaseYear >= 2000 && movie.releaseYear < 2010){
-        dec2000.push(movie.title);
-    }
-    if(movie.releaseYear >= 2010){
-        dec2010.push(movie.title);
-    }
+    listaDecadas(movie);
 }
 
 let decaSetenta = new Filmsbydecade(70, dec70);
@@ -50,6 +51,6 @@ let decaNoventa = new Filmsbydecade(90, dec90);
 let decaDosMil = new Filmsbydecade(2000, dec2000);
 let decaDosMilDiez = new Filmsbydecade(2010, dec2010);
 
-console.log(decaSetent, decaOchenta, decaNoventa, decaDosMil, decaDosMilDiez);
+console.log(decaSetenta, decaOchenta, decaNoventa, decaDosMil, decaDosMilDiez);
 
 
